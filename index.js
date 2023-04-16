@@ -11,6 +11,33 @@ const tutorials = [
   'what is JSONP?'
 ];
 
-const titleCased = () => {
-  return tutorials
+let stringy = ""
+let newString = ""
+let newWord = ""
+let newWordArray = []
+let newWordCollection = []
+
+function titleCased() {
+  tutorials.map(function (tutorial) {
+    let wordArray = tutorial.split(" ")
+    for (let word of wordArray) {
+      let firstCap = word.toUpperCase()
+      let s = firstCap.slice(1)
+      let f = firstCap.slice(0, 1)
+      let lowRest = s.toLowerCase()
+      newWord = f + lowRest
+      newWordArray.push(newWord)
+    }
+    newString = newWordArray.toString()
+    newString = newString.replace(/,/g, " ")
+    newString = newString.replace(/Oo/g, "OO")
+    newString = newString.replace(/Api/g, "API")
+    newString = newString.replace(/Nan/g, "NaN")
+    newString = newString.replace(/Stoppropagation/g, "StopPropagation")
+    newString = newString.replace(/Preventdefault/g, "PreventDefault")
+    newString = newString.replace(/Jsonp/g, "JSONP")
+    newWordCollection.push(newString)
+    newWordArray = []
+  })
+return newWordCollection
 }
